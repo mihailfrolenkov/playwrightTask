@@ -4,6 +4,7 @@ export class BBCNewsPage {
   constructor(private page: Page) {}
 
   url = "https://www.bbc.com/"
+  sportUrl = this.url + "sport"
 
   navMenu = '[data-testid="level1-navigation-container"]'
   navMenuItems = '[data-testid="mainNavigationLink"]'
@@ -11,7 +12,7 @@ export class BBCNewsPage {
   hamburgerMenuItems = '[data-testid="navigationPanel-navItem-level0-/"]'
   hamburgerSportButton = '[data-testid="level0NavButton-/sport"]'
   agreeCookieMessageButton = 'button[title="I agree"]'
-  CookieiFrame = '[title="SP Consent Message"]'
+  cookieFrame = '[title="SP Consent Message"]'
   sportsPageHeader = '[data-testid="masthead"]'
   sportsPageNavMenuItems = '[data-testid="navigation"]'
 
@@ -31,7 +32,7 @@ export class BBCNewsPage {
     "Live"
   ]
 
-  sportsMenuItems = [
+  expectedSportsMenuItems = [
     "Home",
     "Football",
     "Cricket",
@@ -72,12 +73,12 @@ export class BBCNewsPage {
   }
 
   async verifySportPage() {
-    await expect(this.page).toHaveURL(/sport/i)
+    await expect(this.page).toHaveURL(this.sportUrl)
     await expect(this.page.locator(this.sportsPageHeader)).toBeVisible()
   }
 
   async clickAgreeCookieMessage() {
-    const frame = this.page.frameLocator(this.CookieiFrame)
+    const frame = this.page.frameLocator(this.cookieFrame)
     await frame.locator(this.agreeCookieMessageButton, {hasText: "I agree"}).click()
   }
 
@@ -88,7 +89,7 @@ export class BBCNewsPage {
   }
 
   async verifySportNavMenuItems() {
-    for (const item of this.sportsMenuItems) {
+    for (const item of this.expectedSportsMenuItems) {
       await this.page.locator(this.sportsPageNavMenuItems, { hasText: item }).isVisible()
     }
   }

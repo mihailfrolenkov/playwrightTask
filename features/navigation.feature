@@ -8,6 +8,7 @@ Feature: BBC Navigation Menu
     And All navigation menu items are visible
     When I click the "Sport" section
     Then I should be navigated to the Sport page
+    And All sport navigation menu items are visible
 
     Given I open the BBC News homepage in mobile view
     When I accept cookie message
@@ -16,3 +17,4 @@ Feature: BBC Navigation Menu
     When I open the hamburger menu
     And I click the "Sport" section in hamburger menu
     Then I should be navigated to the Sport page
+    And All sport navigation menu items are visible

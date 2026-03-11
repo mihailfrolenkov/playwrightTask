@@ -68,3 +68,7 @@ When("All navigation menu items are visible", async function () {
 When("All burger menu items are visible", async function () {
   await newsPage.verifyBurgerMenuItems()
 })
+
+Then("All sport navigation menu items are visible", async function () {
+  await newsPage.verifySportNavMenuItems()
+})

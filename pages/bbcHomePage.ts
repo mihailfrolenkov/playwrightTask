@@ -13,26 +13,39 @@ export class BBCNewsPage {
   agreeCookieMessageButton = 'button[title="I agree"]'
   CookieiFrame = '[title="SP Consent Message"]'
   sportsPageHeader = '[data-testid="masthead"]'
+  sportsPageNavMenuItems = '[data-testid="navigation"]'
 
   expectedMenuItems = [
-  "Home",
-  "News",
-  "Sport",
-  "Business",
-  "Technology",
-  "Health",
-  "Culture",
-  "Arts",
-  "Travel",
-  "Earth",
-  "Audio",
-  "Video",
-  "Live"
-];
+    "Home",
+    "News",
+    "Sport",
+    "Business",
+    "Technology",
+    "Health",
+    "Culture",
+    "Arts",
+    "Travel",
+    "Earth",
+    "Audio",
+    "Video",
+    "Live"
+  ]
 
-extraBurgerItems = ["Weather", "Newsletter"];
+  sportsMenuItems = [
+    "Home",
+    "Football",
+    "Cricket",
+    "Formula 1",
+    "Rugby U",
+    "Tennis",
+    "Golf",
+    "Cycling",
+    "Athletics"
+  ]
 
-expectedBurgerMenuItems = [...this.expectedMenuItems, ...this.extraBurgerItems];
+  extraBurgerItems = ["Weather", "Newsletter"];
+
+  expectedBurgerMenuItems = [...this.expectedMenuItems, ...this.extraBurgerItems];
 
   async open() {
     await this.page.goto(this.url)
@@ -55,13 +68,12 @@ expectedBurgerMenuItems = [...this.expectedMenuItems, ...this.extraBurgerItems];
   }
 
   async clickHamburgerSportButton() {
-  await this.page.locator(this.hamburgerSportButton, { hasText: "Sport" }).click()
-}
+    await this.page.locator(this.hamburgerSportButton, { hasText: "Sport" }).click()
+  }
 
   async verifySportPage() {
     await expect(this.page).toHaveURL(/sport/i)
     await expect(this.page.locator(this.sportsPageHeader)).toBeVisible()
-
   }
 
   async clickAgreeCookieMessage() {
@@ -75,7 +87,13 @@ expectedBurgerMenuItems = [...this.expectedMenuItems, ...this.extraBurgerItems];
     }
   }
 
-    async verifyBurgerMenuItems() {
+  async verifySportNavMenuItems() {
+    for (const item of this.sportsMenuItems) {
+      await this.page.locator(this.sportsPageNavMenuItems, { hasText: item }).isVisible()
+    }
+  }
+
+  async verifyBurgerMenuItems() {
     for (const item of this.expectedBurgerMenuItems) {
       await this.page.locator(this.hamburgerMenuItems, { hasText: item }).first().isVisible()
     }

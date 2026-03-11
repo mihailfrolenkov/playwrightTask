@@ -1,5 +1,4 @@
 import { Given, When, Then } from "@cucumber/cucumber"
-import { expect } from "@playwright/test"
 import { devices } from "playwright"
 
 import { BBCNewsPage } from "../../pages/bbcHomePage"

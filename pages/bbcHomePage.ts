@@ -43,9 +43,9 @@ export class BBCNewsPage {
     "Athletics"
   ]
 
-  extraBurgerItems = ["Weather", "Newsletter"];
+  extraBurgerItems = ["Weather", "Newsletter"]
 
-  expectedBurgerMenuItems = [...this.expectedMenuItems, ...this.extraBurgerItems];
+  expectedBurgerMenuItems = [...this.expectedMenuItems, ...this.extraBurgerItems]
 
   async open() {
     await this.page.goto(this.url)
@@ -77,7 +77,7 @@ export class BBCNewsPage {
   }
 
   async clickAgreeCookieMessage() {
-    const frame = this.page.frameLocator(this.CookieiFrame);
+    const frame = this.page.frameLocator(this.CookieiFrame)
     await frame.locator(this.agreeCookieMessageButton, {hasText: "I agree"}).click()
   }
 

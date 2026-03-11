@@ -19,7 +19,6 @@ Verify BBC News navigation menu works in:
 ## Install
 
 npm install
-npx playwright install
 
 ## Run Tests
 

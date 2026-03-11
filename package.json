@@ -1,0 +1,14 @@
+{
+  "name": "bbc-playwright-cucumber-test",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "cucumber-js --parallel 2"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^10.0.0",
+    "@playwright/test": "^1.42.0",
+    "playwright": "^1.42.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.0"
+  }
+}
